@@ -6,13 +6,226 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Disease Sim.</title>
 
+    <link rel="stylesheet" href="style.css" />
+
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"
-      integrity="sha512-w1Bktzax55ZbjW5Mqjz8+mKz4KqRjEUU35Dpq/ath29yskKqIGwNIHiFNp03m/OiJWDXvdQ1/g6aV+l4PeVO7Q=="
+      src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.min.js"
+      integrity="sha512-N4kV7GkNv7QR7RX9YF/olywyIgIwNvfEe2nZtfyj73HdjCUkAfOBDbcuJ/cTaN04JKRnw1YG1wnUyNKMsNgg3g=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+
+    <script src="https://raw.githubusercontent.com/jagracar/grafica.js/master/releases/grafica.min.js"></script>
   </head>
 
-  <body></body>
+  <body>
+    <header>
+      <a class="page-button" href="info.html">Info Page</a>
+      <h1>Disease Sim</h1>
+      <a href="welcome.html"><img src="logo.png" alt="Disease Sim. Logo" /></a>
+    </header>
+
+    <div id="canvases">
+      <div id="sim-canvas"></div>
+      <div id="graph-canvas"></div>
+    </div>
+
+    <div id="below-canvases">
+      <div id="sim-controls">
+        <button id="start-button">Start</button>
+        <button id="pause-button">Pause</button>
+        <button id="reset-button">Reset</button>
+
+        <div class="sldier-container">
+          Speed:
+          <input type="range" min="1" max="10" id="speed-slider" />
+          <p id="speed-value">1</p>
+        </div>
+      </div>
+
+      <div id="key">
+        Key:
+        <ul>
+          <li>
+            Healthy
+            <input type="color" id="healthy-color" value="#3399ff" />
+          </li>
+
+          <li>
+            Asymptomatic
+            <input type="color" id="asymp-color" value="#ffd501" />
+          </li>
+
+          <li>
+            Infected
+            <input type="color" id="infected-color" value="#fa671e" />
+          </li>
+
+          <li>
+            Severely Infected
+            <input type="color" id="severelyinfected-color" value="#c00000" />
+          </li>
+
+          <li>
+            Recovered
+            <input type="color" id="recovered-color" value="#d9d9d9" />
+          </li>
+
+          <li>
+            Dead
+            <input type="color" id="recovered-color" value="#404040" />
+          </li>
+        </ul>
+      </div>
+
+      <button id="save-graph-button">Save Graph</button>
+    </div>
+
+    <div id="parameters">
+      <ul>
+        <li>
+          Population size
+          <input
+            type="range"
+            id="population-size-slider"
+            min="10"
+            max="200"
+            value="50"
+            step="1"
+          />
+          <p id="population-size-value">50</p>
+        </li>
+
+        <li>
+          Initial infected population
+          <input
+            type="range"
+            id="initial-infected-population-slider"
+            min="1"
+            max="50"
+            value="20"
+            step="1"
+          />
+          <p id="initial-infected-population-value">20</p>
+        </li>
+
+        <li>
+          Infection radius
+          <input
+            type="range"
+            id="infection-radius-slider"
+            min="0.5"
+            max="10"
+            value="2"
+            step="0.01"
+          />
+          <p id="infection-radius-value">2</p>
+        </li>
+
+        <li>
+          Infection rate
+          <input
+            type="range"
+            id="infection-rate-slider"
+            min="0"
+            max="1"
+            value="0.5"
+            step="0.01"
+          />
+          <p id="infection-rate-value">0.5</p>
+        </li>
+
+        <li>
+          Mortality rate
+          <input
+            type="range"
+            id="mortality-rate-slider"
+            min="0"
+            max="1"
+            value="0.5"
+            step="0.01"
+          />
+          <p id="mortality-rate-value">0.5</p>
+        </li>
+
+        <li>
+          Hospital capacity
+          <input
+            type="range"
+            id="hospital-capacity-slider"
+            min="0"
+            max="50"
+            value="10"
+            step="1"
+          />
+          <p id="hospital-capacity-value">10</p>
+        </li>
+
+        <li>
+          Hospital recovery rate
+          <input
+            type="range"
+            id="hospital-recovery-rate-slider"
+            min="0"
+            max="1"
+            value="0.5"
+            step="0.01"
+          />
+          <p id="hospital-recovery-rate-value">0.5</p>
+        </li>
+
+        <li>
+          Hospital mortality rate
+          <input
+            type="range"
+            id="hospital-mortality-slider"
+            min="0"
+            max="1"
+            value="0.5"
+            step="0.01"
+          />
+          <p id="hospital-mortality-value">0.5</p>
+        </li>
+
+        <li>
+          Social distance radius
+          <input
+            type="range"
+            id="social-distance-radius-slider"
+            min="0"
+            max="10"
+            value="1"
+            step="0.01"
+          />
+          <p id="social-distance-radius-value">1</p>
+        </li>
+
+        <li>
+          Asymptomatic period
+          <input
+            type="range"
+            id="asymp-period-slider"
+            min="1"
+            max="20"
+            value="4"
+            step="1"
+          />
+          <p id="asymp-period-value">4</p>
+        </li>
+
+        <li>
+          Infectious period
+          <input
+            type="range"
+            id="infectious-period-slider"
+            min="2"
+            max="20"
+            value="15"
+            step="1"
+          />
+          <p id="infectious-period-value">15</p>
+        </li>
+      </ul>
+    </div>
+  </body>
 </html>
