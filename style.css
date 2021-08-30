@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap");
 
 :root {
-  --bg-color: #D7F8FF;
+  --bg-color: #d7f8ff;
   --red-text-color: #540000;
-  --button-border-color: #2F528F;
+  --button-border-color: #2f528f;
 }
 
 body {
@@ -42,5 +42,5 @@ body {
 #welcome-message {
   font-size: 6vmin;
   margin: 1vmin;
-  color: var(--red-text-color)
+  color: var(--red-text-color);
 }
