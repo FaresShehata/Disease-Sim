@@ -21,22 +21,24 @@
   <body>
     <header>
       <a class="page-button" href="info.html">Info Page</a>
-      <h1>Disease Sim</h1>
-      <a href="welcome.html"><img src="logo.png" alt="Disease Sim. Logo" /></a>
+      <h1>Disease Sim.</h1>
+      <a class="logo" href="welcome.html"
+        ><img src="logo.png" alt="Disease Sim. Logo"
+      /></a>
     </header>
 
     <div id="canvases">
-      <div id="sim-canvas"></div>
-      <div id="graph-canvas"></div>
+      <div class="canvas-container" id="sim-canvas"></div>
+      <div class="canvas-container" id="graph-canvas"></div>
     </div>
 
     <div id="below-canvases">
       <div id="sim-controls">
-        <button id="start-button">Start</button>
-        <button id="pause-button">Pause</button>
-        <button id="reset-button">Reset</button>
+        <button class="sim-button" id="start-button">Start</button>
+        <button class="sim-button" id="pause-button">Pause</button>
+        <button class="sim-button" id="reset-button">Reset</button>
 
-        <div class="sldier-container">
+        <div id="speed-slider-container">
           Speed:
           <input type="range" min="1" max="10" id="speed-slider" />
           <p id="speed-value">1</p>
@@ -78,7 +80,7 @@
         </ul>
       </div>
 
-      <button id="save-graph-button">Save Graph</button>
+      <button class="sim-button" id="save-graph-button">Save Graph</button>
     </div>
 
     <div id="parameters">
