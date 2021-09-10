@@ -45,13 +45,16 @@ let hospitalOccupancy = 0;
 let simulationRunning = false;
 
 function simulationSketch(p) {
-  p.setup = function() {
-    const width = (p.windowWidth / 2) - 3 * 25;
+  p.setup = function () {
+    const width = p.windowWidth / 2 - 3 * 25;
     const height = 13 * 25;
     p.createCanvas(width, height);
+
+    HOSPITALWIDTH = p.width * 0.25;
+    HOSPITALHEIGHT = p.height * 0.25;
   };
 
-  p.draw = function() {
+  p.draw = function () {
     p.background(255);
     p.fill(0);
     p.ellipse(250, 250, 100);
