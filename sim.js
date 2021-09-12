@@ -30,7 +30,7 @@ let HOSPITALWIDTH, HOSPITALHEIGHT;
 
 const PERSONRADIUS = 10;
 
-const PERSONMAXSPEED = 10;
+const PERSONMAXSPEED = 5;
 
 const MINIMUMACC = 10;
 
@@ -50,14 +50,30 @@ function simulationSketch(p) {
     const height = 13 * 25;
     p.createCanvas(width, height);
 
-    HOSPITALWIDTH = p.width * 0.25;
-    HOSPITALHEIGHT = p.height * 0.25;
+    HOSPITALWIDTH = p.width * 0.35;
+    HOSPITALHEIGHT = p.height * 0.35;
+
+    HEALTHYCOLOR = "#0000ff";
+    ASYMPCOLOR = "#ffaa00";
+    INFECTEDCOLOR = "#ff0000";
+    SEVERELYINFECTEDCOLOR = "#770000";
+    DEADCOLOR = "#000000";
+    RECOVEREDCOLOR = "#888888";
   };
 
   p.draw = function () {
     p.background(255);
-    p.fill(0);
-    p.ellipse(250, 250, 100);
+    currentFrame++;
+
+    p.fill(255, 0);
+    p.stroke(0);
+    p.strokeWeight(5);
+    p.rect(0, 0, p.width, p.height);
+
+    p.fill(255, 0);
+    p.stroke(0);
+    p.strokeWeight(2);
+    p.rect(0, p.height - HOSPITALHEIGHT, HOSPITALWIDTH, HOSPITALHEIGHT);
   };
 }
 

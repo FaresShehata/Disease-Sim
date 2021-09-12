@@ -32,38 +32,48 @@ class Person {
     // Default value for someone who has never been infected
   }
 
-  move() {
-    if (this.state == DEAD || this.inHospital) return;
+  move(p) {
+    if (this.state === DEAD || this.inHospital) return;
     // People who are dead or in hospital don't move
 
     this.vel.add(this.acc);
-    this.vel.limit(PERSONMAXSPED);
+    this.vel.limit(PERSONMAXSPEED);
     // Ensures the person does not exceed the maximum possible speed
 
     this.pos.add(this.vel);
     // Velocity updates position, acceleration updates velocity
 
     if (
-      (this.pos.x <= PERSONRADIUS &&
-        this.pos.y < height - HOSPITALHEIGHT - PERSONRADIUS) ||
-      (this.pos.x <= HOSPITALWIDTH + PERSONRADIUS &&
-        this.pos.y >= height - HOSPITALHEIGHT - PERSONRADIUS) ||
-      this.pos.x >= width - PERSONRADIUS
+      (this.pos.x < PERSONRADIUS &&
+        this.pos.y < p.height - HOSPITALHEIGHT - PERSONRADIUS) ||
+      this.pos.x > p.width - PERSONRADIUS
     ) {
       this.vel.x = -this.vel.x;
+    } else if (
+      this.pos.y > p.height - HOSPITALHEIGHT - PERSONRADIUS &&
+      this.pos.x < HOSPITALWIDTH + PERSONRADIUS &&
+      this.pos.x > HOSPITALWIDTH
+    ) {
+      this.pos.x = HOSPITALWIDTH + PERSONRADIUS;
+      this.vel.x = -this.vel.x;
     }
-    // Flipping a person's x direction if they collide with a horizontal wall
+    // Flipping a person's x direction if they collide with a vertical wall
 
     if (
-      this.pos.y <= PERSONRADIUS ||
-      (this.pos.y >= height - PERSONRADIUS &&
-        this.pos.x > HOSPITALWIDTH + PERSONRADIUS) ||
-      (this.pos.y >= height - HOSPITALHEIGHT - PERSONRADIUS &&
-        this.pos.x <= HOSPITALWIDTH + PERSONRADIUS)
+      this.pos.y < PERSONRADIUS ||
+      (this.pos.y > p.height - PERSONRADIUS &&
+        this.pos.x > HOSPITALWIDTH + PERSONRADIUS)
     ) {
       this.vel.y = -this.vel.y;
+    } else if (
+      this.pos.x < HOSPITALWIDTH + PERSONRADIUS &&
+      this.pos.y > p.height - HOSPITALHEIGHT - PERSONRADIUS &&
+      this.pos.y < p.height - HOSPITALHEIGHT
+    ) {
+      this.pos.y = p.height - HOSPITALHEIGHT - PERSONRADIUS;
+      this.vel.y = -this.vel.y;
     }
-    // Flipping a person's y direction if they collide with a vertical wall
+    // Flipping a person's y direction if they collide with a horizontal wall
 
     this.acc.mult(0.95);
     if (this.acc.magSq() < MINIMUMACC * MINIMUMACC) {
@@ -76,6 +86,7 @@ class Person {
   }
 
   draw(p) {
+    p.strokeWeight(0);
     switch (this.state) {
       case HEALTHY:
         p.fill(HEALTHYCOLOR);
@@ -180,7 +191,10 @@ class Person {
 
     this.pos.set(
       p.random(PERSONRADIUS, HOSPITALWIDTH - PERSONRADIUS),
-      p.random(height - HOSPITALHEIGHT + PERSONRADIUS, p.height - PERSONRADIUS)
+      p.random(
+        p.height - HOSPITALHEIGHT + PERSONRADIUS,
+        p.height - PERSONRADIUS
+      )
     );
 
     hospitalOccupancy++;
