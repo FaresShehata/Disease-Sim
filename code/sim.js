@@ -59,6 +59,9 @@ function simulationSketch(p) {
     SEVERELYINFECTEDCOLOR = "#770000";
     DEADCOLOR = "#000000";
     RECOVEREDCOLOR = "#888888";
+
+    POPULATIONSIZE = 10;
+    INITIALINFECTEDPOPULATION = 2;
   };
 
   p.draw = function () {
