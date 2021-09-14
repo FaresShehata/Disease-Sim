@@ -62,6 +62,8 @@ function simulationSketch(p) {
 
     POPULATIONSIZE = 10;
     INITIALINFECTEDPOPULATION = 2;
+
+    initialiseSim(p);
   };
 
   p.draw = function () {
@@ -77,6 +79,9 @@ function simulationSketch(p) {
     p.stroke(0);
     p.strokeWeight(2);
     p.rect(0, p.height - HOSPITALHEIGHT, HOSPITALWIDTH, HOSPITALHEIGHT);
+
+    moveAllPeople(p);
+    drawAllPeople(p);
   };
 }
 
