@@ -44,11 +44,16 @@ class Person {
     // Velocity updates position, acceleration updates velocity
 
     if (
-      (this.pos.x < PERSONRADIUS &&
-        this.pos.y < p.height - HOSPITALHEIGHT - PERSONRADIUS) ||
-      this.pos.x > p.width - PERSONRADIUS
+      this.pos.x < PERSONRADIUS &&
+      this.pos.y < p.height - HOSPITALHEIGHT - PERSONRADIUS
     ) {
+      this.pos.x = PERSONRADIUS;
       this.vel.x = -this.vel.x;
+      //
+    } else if (this.pos.x > p.width - PERSONRADIUS) {
+      this.pos.x = p.width - PERSONRADIUS;
+      this.vel.x = -this.vel.x;
+      //
     } else if (
       this.pos.y > p.height - HOSPITALHEIGHT - PERSONRADIUS &&
       this.pos.x < HOSPITALWIDTH + PERSONRADIUS &&
@@ -59,12 +64,17 @@ class Person {
     }
     // Flipping a person's x direction if they collide with a vertical wall
 
-    if (
-      this.pos.y < PERSONRADIUS ||
-      (this.pos.y > p.height - PERSONRADIUS &&
-        this.pos.x > HOSPITALWIDTH + PERSONRADIUS)
-    ) {
+    if (this.pos.y < PERSONRADIUS) {
+      this.pos.y = PERSONRADIUS;
       this.vel.y = -this.vel.y;
+      //
+    } else if (
+      this.pos.y > p.height - PERSONRADIUS &&
+      this.pos.x > HOSPITALWIDTH + PERSONRADIUS
+    ) {
+      this.pos.y = p.height - PERSONRADIUS;
+      this.vel.y = -this.vel.y;
+      //
     } else if (
       this.pos.x < HOSPITALWIDTH + PERSONRADIUS &&
       this.pos.y > p.height - HOSPITALHEIGHT - PERSONRADIUS &&

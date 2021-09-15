@@ -34,7 +34,9 @@ const PERSONMAXSPEED = 5;
 
 const MINIMUMACC = 10;
 
-const SOCIALDISTANCESTRENGTH = 10;
+const SOCIALDISTANCESTRENGTH = 1.3;
+
+const SOCIALDISTANCEMULTIPLIER = 1.5;
 
 let people = [];
 
@@ -60,8 +62,10 @@ function simulationSketch(p) {
     DEADCOLOR = "#000000";
     RECOVEREDCOLOR = "#888888";
 
-    POPULATIONSIZE = 10;
-    INITIALINFECTEDPOPULATION = 2;
+    POPULATIONSIZE = 20;
+    INITIALINFECTEDPOPULATION = 0;
+
+    SOCIALDISTANCERADIUS = 4;
 
     initialiseSim(p);
   };
@@ -82,6 +86,8 @@ function simulationSketch(p) {
 
     moveAllPeople(p);
     drawAllPeople(p);
+
+    socialDistancing();
   };
 }
 
