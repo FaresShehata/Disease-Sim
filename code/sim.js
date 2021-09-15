@@ -62,7 +62,7 @@ function simulationSketch(p) {
     DEADCOLOR = "#000000";
     RECOVEREDCOLOR = "#888888";
 
-    POPULATIONSIZE = 2;
+    POPULATIONSIZE = 1;
     INITIALINFECTEDPOPULATION = 1;
 
     SOCIALDISTANCERADIUS = 4;
@@ -70,9 +70,10 @@ function simulationSketch(p) {
     INFECTIONRADIUS = 4;
 
     ASYMPPERIOD = 2;
+    INFECTIOUSPERIOD = 4;
     INFECTIONRATE = 1;
-    MORTALITYRATE = 1;
-    HOSPITALMORTALITYRATE = 1;
+    MORTALITYRATE = 0;
+    HOSPITALMORTALITYRATE = 0;
 
     initialiseSim(p);
   };
