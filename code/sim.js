@@ -62,42 +62,31 @@ function simulationSketch(p) {
     DEADCOLOR = "#000000";
     RECOVEREDCOLOR = "#888888";
 
-    POPULATIONSIZE = 2;
+    POPULATIONSIZE = 10;
     INITIALINFECTEDPOPULATION = 2;
 
-    SOCIALDISTANCERADIUS = 4;
+    SOCIALDISTANCERADIUS = 2;
 
     INFECTIONRADIUS = 4;
 
     ASYMPPERIOD = 10;
-    INFECTIOUSPERIOD = 10;
-    INFECTIONRATE = 1;
-    MORTALITYRATE = 0;
-    HOSPITALMORTALITYRATE = 0;
-    HOSPITALCAPACITY = 1;
+    INFECTIOUSPERIOD = 20;
+    INFECTIONRATE = 0.5;
+    MORTALITYRATE = 0.3;
+    HOSPITALMORTALITYRATE = 0.05;
+    HOSPITALCAPACITY = 4;
 
-    RECOVERYRATE = 1;
-    HOSPITALRECOVERYRATE = 1;
+    RECOVERYRATE = 0.01;
+    HOSPITALRECOVERYRATE = 0.5;
 
     initialiseSim(p);
   };
 
   p.draw = function () {
-    p.background(255);
-    currentFrame++;
-
-    p.fill(255, 0);
-    p.stroke(0);
-    p.strokeWeight(5);
-    p.rect(0, 0, p.width, p.height);
-
-    p.fill(255, 0);
-    p.stroke(0);
-    p.strokeWeight(2);
-    p.rect(0, p.height - HOSPITALHEIGHT, HOSPITALWIDTH, HOSPITALHEIGHT);
-
-    moveAllPeople(p);
-    drawAllPeople(p);
+    drawSimulation(p);
+    if (simulationRunning) {
+      runSimulation(p);
+    }
   };
 }
 

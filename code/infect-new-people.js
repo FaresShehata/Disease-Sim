@@ -1,8 +1,6 @@
 function infectNewPeople() {
   // This is executed once every second
 
-  console.log("infect new people");
-
   for (let i = 0; i < people.length; i++) {
     if (people[i].state != HEALTHY) continue;
     // Only considering healthy people for person i
