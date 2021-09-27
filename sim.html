@@ -31,6 +31,8 @@
     <script src="code/run-simulation.js"></script>
     <script src="code/draw-simulation.js"></script>
 
+    <script defer src="code/input.js"></script>
+
     <script src="code/sim.js"></script>
   </head>
 
@@ -56,8 +58,16 @@
 
         <div id="speed-slider-container">
           Speed:
-          <input type="range" min="1" max="10" id="speed-slider" />
-          <p id="speed-value">1</p>
+          <input
+            class="slider"
+            id="speed-slider"
+            type="range"
+            min="1"
+            max="10"
+            value="1"
+            step="1"
+          />
+          <p class="slider-value" id="speed-value">1</p>
         </div>
       </div>
 
@@ -91,7 +101,7 @@
 
           <li>
             Dead
-            <input type="color" id="recovered-color" value="#404040" />
+            <input type="color" id="dead-color" value="#404040" />
           </li>
         </ul>
       </div>
@@ -105,143 +115,154 @@
           Population size
           <input
             type="range"
+            class="slider"
             id="population-size-slider"
             min="10"
             max="200"
             value="50"
             step="1"
           />
-          <p id="population-size-value">50</p>
+          <p class="slider-value" id="population-size-value">50</p>
         </li>
 
         <li>
           Initial infected population
           <input
             type="range"
+            class="slider"
             id="initial-infected-population-slider"
             min="1"
             max="50"
             value="20"
             step="1"
           />
-          <p id="initial-infected-population-value">20</p>
+          <p class="slider-value" id="initial-infected-population-value">20</p>
         </li>
 
         <li>
           Infection radius
           <input
             type="range"
+            class="slider"
             id="infection-radius-slider"
             min="0.5"
             max="10"
             value="2"
             step="0.01"
           />
-          <p id="infection-radius-value">2</p>
+          <p class="slider-value" id="infection-radius-value">2.00</p>
         </li>
 
         <li>
           Infection rate
           <input
             type="range"
+            class="slider"
             id="infection-rate-slider"
             min="0"
             max="1"
             value="0.5"
             step="0.01"
           />
-          <p id="infection-rate-value">0.5</p>
+          <p class="slider-value" id="infection-rate-value">0.50</p>
         </li>
 
         <li>
           Mortality rate
           <input
             type="range"
+            class="slider"
             id="mortality-rate-slider"
             min="0"
             max="1"
             value="0.5"
             step="0.01"
           />
-          <p id="mortality-rate-value">0.5</p>
+          <p class="slider-value" id="mortality-rate-value">0.50</p>
         </li>
 
         <li>
           Hospital capacity
           <input
             type="range"
+            class="slider"
             id="hospital-capacity-slider"
             min="0"
             max="50"
             value="10"
             step="1"
           />
-          <p id="hospital-capacity-value">10</p>
+          <p class="slider-value" id="hospital-capacity-value">10</p>
         </li>
 
         <li>
           Hospital recovery rate
           <input
             type="range"
+            class="slider"
             id="hospital-recovery-rate-slider"
             min="0"
             max="1"
             value="0.5"
             step="0.01"
           />
-          <p id="hospital-recovery-rate-value">0.5</p>
+          <p class="slider-value" id="hospital-recovery-rate-value">0.50</p>
         </li>
 
         <li>
           Hospital mortality rate
           <input
             type="range"
+            class="slider"
             id="hospital-mortality-slider"
             min="0"
             max="1"
             value="0.5"
             step="0.01"
           />
-          <p id="hospital-mortality-value">0.5</p>
+          <p class="slider-value" id="hospital-mortality-value">0.50</p>
         </li>
 
         <li>
           Social distance radius
           <input
             type="range"
+            class="slider"
             id="social-distance-radius-slider"
             min="0"
             max="10"
             value="1"
             step="0.01"
           />
-          <p id="social-distance-radius-value">1</p>
+          <p class="slider-value" id="social-distance-radius-value">1.00</p>
         </li>
 
         <li>
           Asymptomatic period
           <input
             type="range"
+            class="slider"
             id="asymp-period-slider"
             min="1"
             max="20"
             value="4"
             step="1"
           />
-          <p id="asymp-period-value">4</p>
+          <p class="slider-value" id="asymp-period-value">4</p>
         </li>
 
         <li>
           Infectious period
           <input
             type="range"
+            class="slider"
             id="infectious-period-slider"
             min="2"
             max="20"
             value="15"
             step="1"
           />
-          <p id="infectious-period-value">15</p>
+          <p class="slider-value" id="infectious-period-value">15</p>
         </li>
       </ul>
     </div>

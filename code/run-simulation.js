@@ -19,19 +19,11 @@ function runSimulation(p) {
   SOCIALDISTANCERADIUS parameter */
 
   if (currentFrame % 60 === 0) {
-    becomeSickerOrDie();
+    becomeSickerOrDie(p);
     /* This causes infected people to either become sicker or die according
     to INFECTIONRATE and MORTALITYRATE/HOSPITALMORTALITYRATE parameters. It
     also causes asymptomatic people to become "INFECTED" after their
     asymptomatic period ends */
-
-    moveToHospital(p);
-    /* This causes severely infected people to be moved to the hospital if
-    there is capacity */
-
-    infectNewPeople();
-    /* This causes infected people to be able to infect healthy people that
-    are within the INFECTIONRADIUS and according to the INFECTIONRATE */
 
     infectiousPeriodRecovery(p);
     /* This causes infected people who have been infected for the infectious
@@ -40,5 +32,13 @@ function runSimulation(p) {
     recovery(p);
     /* This causes infected people to recover according to the RECOVERYRATE /
     HOSPITALRECOVERYRATE parameters */
+
+    moveToHospital(p);
+    /* This causes severely infected people to be moved to the hospital if
+    there is capacity */
+
+    infectNewPeople();
+    /* This causes infected people to be able to infect healthy people that
+    are within the INFECTIONRADIUS and according to the INFECTIONRATE */
   }
 }
