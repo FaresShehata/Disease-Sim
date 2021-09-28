@@ -49,19 +49,22 @@ function updateSliderValue(slider, idx) {
     sliderValues[2].innerHTML = sliders[2].value;
     // Updating initial infected population when population size changes
 
-    // idx = 6 for hospital capacity population
-    sliders[6].max = slider.value;
-    sliders[6].value = Math.min(slider.value, sliders[6].value);
-    sliderValues[6].innerHTML = sliders[6].value;
+    // idx = 7 for hospital capacity population
+    sliders[7].max = slider.value;
+    sliders[7].value = Math.min(slider.value, sliders[7].value);
+    sliderValues[7].innerHTML = sliders[7].value;
     // Updating hospital capacity when population size changes
 
     //
-  } else if (idx === 11 /* infectious period */) {
-    // idx = 10 for asymptomatic period
-    sliders[10].max = slider.value;
-    sliders[10].value = Math.min(slider.value, sliders[10].value);
-    sliderValues[10].innerHTML = sliders[10].value;
+  } else if (idx === 12 /* infectious period */) {
+    // idx = 11 for asymptomatic period
+    sliders[11].max = slider.value;
+    sliders[11].value = Math.min(slider.value, sliders[11].value);
+    sliderValues[11].innerHTML = sliders[11].value;
     // Updating asymptomatic period when infectious period changes
+  } else if (idx === 0 /* Speed */) {
+    PARAMETERS.SPEED = slider.value;
+    // Updating the parameter whenever the input is changed
   }
 }
 

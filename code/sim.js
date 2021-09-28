@@ -73,7 +73,7 @@ function simulationSketch(p) {
 
     drawSimulation(p);
     if (simulationRunning && !simulationPaused) {
-      runSimulation(p);
+      for (let i = 0; i < PARAMETERS.SPEED; i++) runSimulation(p);
     }
   };
 }
