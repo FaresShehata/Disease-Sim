@@ -25,12 +25,13 @@ function infectNewPeople() {
       which is a relatively slow process */
 
       const r = PERSONRADIUS;
-      const f = INFECTIONRADIUS;
+      const f = PARAMETERS.INFECTIONRADIUS;
 
       /* The if statement below is equivalent to
       if (dist < 2*r + 2*f*r) */
       if (distSq < 4 * r * r * (1 + 2 * f + f * f)) {
-        if (Math.random() < INFECTIONRATE) people[j].infect(people[i]);
+        if (Math.random() < PARAMETERS.INFECTIONRATE)
+          people[j].infect(people[i]);
         /* INFECTIONRATE is a probability, so a random number between 0 and 1
         is chosen and compared to the parameter. If the random number is less,
         then person i will be infected by person j */

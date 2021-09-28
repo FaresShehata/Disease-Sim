@@ -7,9 +7,9 @@ function recovery(p) {
     // Only considering infected people
 
     if (!person.inHospital) {
-      if (Math.random() < RECOVERYRATE) person.recover(p);
+      if (Math.random() < PARAMETERS.RECOVERYRATE) person.recover(p);
     } else {
-      if (Math.random() < HOSPITALRECOVERYRATE) person.recover(p);
+      if (Math.random() < PARAMETERS.HOSPITALRECOVERYRATE) person.recover(p);
     }
     /* RECOVERYRATE and HOSPITALRECOVERYRATE are probabilities, so a random
     number between 0 and 1 is chosen and compared to the parameter. If the

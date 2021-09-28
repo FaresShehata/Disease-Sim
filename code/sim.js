@@ -24,32 +24,12 @@ const COLORS = {
   DEADCOLOR: "",
 };
 
-// let POPULATIONSIZE,
-//   INITIALINFECTEDPOPULATION,
-//   INFECTIONRADIUS,
-//   INFECTIONRATE,
-//   RECOVERYRATE,
-//   MORTALITYRATE,
-//   HOSPITALCAPACITY,
-//   HOSPITALRECOVERYRATE,
-//   HOSPITALMORTALITYRATE,
-//   SOCIALDISTANCERADIUS,
-//   ASYMPPERIOD,
-//   INFECTIOUSPERIOD;
-
 const HEALTHY = "h";
 const ASYMP = "a";
 const INFECTED = "i";
 const SEVERELYINFECTED = "s";
 const RECOVERED = "r";
 const DEAD = "d";
-
-// let HEALTHYCOLOR,
-//   ASYMPCOLOR,
-//   INFECTEDCOLOR,
-//   SEVERELYINFECTEDCOLOR,
-//   RECOVEREDCOLOR,
-//   DEADCOLOR;
 
 let HOSPITALWIDTH, HOSPITALHEIGHT;
 
@@ -71,6 +51,8 @@ let hospitalOccupancy = 0;
 
 let simulationRunning = false;
 
+let simulationStart = false;
+
 function simulationSketch(p) {
   p.setup = function () {
     const width = p.windowWidth / 2 - 3 * 25;
@@ -79,35 +61,14 @@ function simulationSketch(p) {
 
     HOSPITALWIDTH = p.width * 0.35;
     HOSPITALHEIGHT = p.height * 0.35;
-
-    HEALTHYCOLOR = "#0000ff";
-    ASYMPCOLOR = "#ffaa00";
-    INFECTEDCOLOR = "#ff0000";
-    SEVERELYINFECTEDCOLOR = "#770000";
-    DEADCOLOR = "#000000";
-    RECOVEREDCOLOR = "#888888";
-
-    POPULATIONSIZE = 50;
-    INITIALINFECTEDPOPULATION = 5;
-
-    SOCIALDISTANCERADIUS = 4;
-
-    INFECTIONRADIUS = 3;
-
-    ASYMPPERIOD = 10;
-    INFECTIOUSPERIOD = 20;
-    INFECTIONRATE = 0.5;
-    MORTALITYRATE = 0.4;
-    HOSPITALMORTALITYRATE = 0.05;
-    HOSPITALCAPACITY = 4;
-
-    RECOVERYRATE = 0.01;
-    HOSPITALRECOVERYRATE = 0.5;
-
-    initialiseSim(p);
   };
 
   p.draw = function () {
+    if (simulationStart) {
+      initialiseSim(p);
+      simulationStart = false;
+    }
+
     drawSimulation(p);
     if (simulationRunning) {
       runSimulation(p);

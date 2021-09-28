@@ -1,7 +1,7 @@
 function socialDistancing() {
   // This is executed every frame
 
-  if (SOCIALDISTANCERADIUS === 0) return;
+  if (PARAMETERS.SOCIALDISTANCERADIUS === 0) return;
   // No social distancing if the parameter is 0
 
   // This nested loop ensures every pair of people is only compared once
@@ -21,7 +21,7 @@ function socialDistancing() {
       which is a relatively slow process */
 
       const r = PERSONRADIUS;
-      const s = SOCIALDISTANCERADIUS;
+      const s = PARAMETERS.SOCIALDISTANCERADIUS;
 
       /* The if statement below is equivalent to
       if (dist < 2*r + 2*s*r) */

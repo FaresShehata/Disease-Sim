@@ -4,6 +4,15 @@ const colors = document.querySelectorAll("input[type=color]");
 /* Getting all the sliders, slider values, and colours as NodeLists. Both
 lists are in the same order due to the structure of the html */
 
+const start = document.getElementById("start-button");
+// Getting the buttons
+
+start.addEventListener("click", () => {
+  if (simulationRunning) return;
+  getUserInput();
+  simulationStart = true;
+});
+
 sliders.forEach((slider, idx) => {
   slider.oninput = () => updateSliderValue(slider, idx);
 });

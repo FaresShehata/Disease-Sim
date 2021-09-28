@@ -99,27 +99,27 @@ class Person {
     p.strokeWeight(0);
     switch (this.state) {
       case HEALTHY:
-        p.fill(HEALTHYCOLOR);
+        p.fill(COLORS.HEALTHYCOLOR);
         break;
 
       case ASYMP:
-        p.fill(ASYMPCOLOR);
+        p.fill(COLORS.ASYMPCOLOR);
         break;
 
       case INFECTED:
-        p.fill(INFECTEDCOLOR);
+        p.fill(COLORS.INFECTEDCOLOR);
         break;
 
       case SEVERELYINFECTED:
-        p.fill(SEVERELYINFECTEDCOLOR);
+        p.fill(COLORS.SEVERELYINFECTEDCOLOR);
         break;
 
       case RECOVERED:
-        p.fill(RECOVEREDCOLOR);
+        p.fill(COLORS.RECOVEREDCOLOR);
         break;
 
       case DEAD:
-        p.fill(DEADCOLOR);
+        p.fill(COLORS.DEADCOLOR);
         break;
     }
     // Giving the person the correct colour based on their state
