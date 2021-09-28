@@ -2,15 +2,30 @@ const sliders = document.querySelectorAll(".slider");
 const sliderValues = document.querySelectorAll(".slider-value");
 const colors = document.querySelectorAll("input[type=color]");
 /* Getting all the sliders, slider values, and colours as NodeLists. Both
-lists are in the same order due to the structure of the html */
+slider lists are in the same order due to the structure of the html */
 
 const start = document.getElementById("start-button");
+const pause = document.getElementById("pause-button");
+const reset = document.getElementById("reset-button");
 // Getting the buttons
 
 start.addEventListener("click", () => {
-  if (simulationRunning) return;
-  getUserInput();
-  simulationStart = true;
+  if (simulationRunning && simulationPaused) {
+    simulationPaused = false;
+  } else if (!simulationRunning) {
+    getUserInput();
+    simulationStart = true;
+  }
+});
+
+pause.addEventListener("click", () => {
+  if (simulationRunning) simulationPaused = true;
+});
+
+reset.addEventListener("click", () => {
+  simulationRunning = false;
+  simulationPaused = false;
+  people = [];
 });
 
 sliders.forEach((slider, idx) => {

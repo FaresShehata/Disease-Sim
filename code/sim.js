@@ -53,6 +53,8 @@ let simulationRunning = false;
 
 let simulationStart = false;
 
+let simulationPaused = false;
+
 function simulationSketch(p) {
   p.setup = function () {
     const width = p.windowWidth / 2 - 3 * 25;
@@ -70,7 +72,7 @@ function simulationSketch(p) {
     }
 
     drawSimulation(p);
-    if (simulationRunning) {
+    if (simulationRunning && !simulationPaused) {
       runSimulation(p);
     }
   };
