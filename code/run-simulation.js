@@ -4,12 +4,19 @@ function runSimulation(p) {
   currentFrame++;
   // Increment the frame counter
 
+  if (currentFrame % 60 === 1) {
+  }
+
   let infectedCount = 0;
   for (const person of people) {
     const possibleStates = [ASYMP, INFECTED, SEVERELYINFECTED];
     if (possibleStates.includes(person.state)) infectedCount++;
   }
-  if (infectedCount === 0) simulationRunning = false;
+  if (infectedCount === 0) {
+    simulationRunning = false;
+    updatePointsArrays();
+    graphDraw = true;
+  }
   // Stopping the simulation if there are no more infected people
 
   moveAllPeople(p);
@@ -40,5 +47,11 @@ function runSimulation(p) {
     infectNewPeople();
     /* This causes infected people to be able to infect healthy people that
     are within the INFECTIONRADIUS and according to the INFECTIONRATE */
+
+    storeCurrentState();
+    // Store the state of the simulation every second
+
+    updatePointsArrays();
+    graphDraw = true;
   }
 }

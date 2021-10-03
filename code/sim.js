@@ -45,6 +45,8 @@ const SOCIALDISTANCEMULTIPLIER = 1.5;
 
 let people = [];
 
+let simulationState = [];
+
 let currentFrame = 0;
 
 let hospitalOccupancy = 0;
@@ -76,6 +78,13 @@ function simulationSketch(p) {
       for (let i = 0; i < PARAMETERS.SPEED; i++) runSimulation(p);
     }
   };
+}
+
+function storeCurrentState() {
+  const arr = [];
+  for (const person of people) arr.push(person.state);
+
+  simulationState.push(arr);
 }
 
 new p5(simulationSketch, "sim-canvas");

@@ -7,6 +7,7 @@ slider lists are in the same order due to the structure of the html */
 const start = document.getElementById("start-button");
 const pause = document.getElementById("pause-button");
 const reset = document.getElementById("reset-button");
+const saveGraph = document.getElementById("save-graph-button");
 // Getting the buttons
 
 start.addEventListener("click", () => {
@@ -15,6 +16,7 @@ start.addEventListener("click", () => {
   } else if (!simulationRunning) {
     getUserInput();
     simulationStart = true;
+    graphStart = true;
   }
 });
 
@@ -26,6 +28,10 @@ reset.addEventListener("click", () => {
   simulationRunning = false;
   simulationPaused = false;
   people = [];
+});
+
+saveGraph.addEventListener("click", () => {
+  graphSave = true;
 });
 
 sliders.forEach((slider, idx) => {
@@ -62,6 +68,8 @@ function updateSliderValue(slider, idx) {
     sliders[11].value = Math.min(slider.value, sliders[11].value);
     sliderValues[11].innerHTML = sliders[11].value;
     // Updating asymptomatic period when infectious period changes
+
+    //
   } else if (idx === 0 /* Speed */) {
     PARAMETERS.SPEED = slider.value;
     // Updating the parameter whenever the input is changed
