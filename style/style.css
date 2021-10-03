@@ -173,3 +173,13 @@ header > h1 {
   margin: 0;
   padding: 0;
 }
+
+/* ----------------------------- */
+
+/* Info Page */
+
+#info-page {
+  text-align: left;
+  line-height: 1.5;
+  margin: 0 5rem;
+}

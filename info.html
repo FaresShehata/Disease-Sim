@@ -5,7 +5,118 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Disease Sim.</title>
+
+    <link rel="stylesheet" href="style/style.css" />
   </head>
 
-  <body></body>
+  <body>
+    <header>
+      <a class="page-button" href="sim.html">Sim Page</a>
+      <h1>Disease Sim.</h1>
+      <a class="logo" href="welcome.html">
+        <img src="logo.png" alt="Disease Sim. Logo" />
+      </a>
+    </header>
+
+    <div id="info-page">
+      <h2>What is Disease Sim?</h2>
+      Disease Sim is a tool to help you simulate disease spread. By setting the
+      parameters, you can watch how the epidemic will unfold.
+
+      <h2>The States</h2>
+      The states used in the simulation are:
+      <ul>
+        <li>
+          Healthy - someone who has never had the disease and is susceptible.
+        </li>
+
+        <li>
+          Asymptomatic - someone who is infected, but doesn't show symptoms, and
+          will social distance less than someone who does show symptoms.
+        </li>
+
+        <li>Infected - someone who is infected and shows symptoms.</li>
+
+        <li>
+          Severely Infected - someone who is infected and who's condition is
+          very bad. Severely infected people will go to the hospital if there is
+          room.
+        </li>
+
+        <li>
+          Recovered - someone who had the disease, but no longer does. Recovered
+          people cannot become infected again.
+        </li>
+
+        <li>Dead - someone who has died from the disease.</li>
+      </ul>
+
+      <h2>The Parameters</h2>
+      The parameters are:
+      <ul>
+        <li>Population size - the total number of people in the simulation.</li>
+
+        <li>
+          Initial infected population - how many people will start out with the
+          disease.
+        </li>
+
+        <li>
+          Infection radius - the minimum distance two people can be from each
+          other before the disease can spread between them.<br />
+          This parameter is relative to the size of a person. E.g. a value of 3
+          means the distance two people can be apart before the disease can
+          spread between them is equivalent to the size of 3 people.
+        </li>
+
+        <li>
+          Infection rate - the probability that the disease can spread between
+          two people every day.
+        </li>
+
+        <li>
+          Recovery rate - the probability that an infected person will recover
+          every day.
+        </li>
+
+        <li>
+          Mortality rate - the probability that an infected person will die
+          every day.
+        </li>
+
+        <li>
+          Hospital capacity - the maximum number of people that can be in the
+          hospital.
+        </li>
+
+        <li>
+          Hospital recovery rate - the probability that someone in the hospital
+          will recover every day.
+        </li>
+
+        <li>
+          Hospital mortality rate - the probability that someone in the hospital
+          will die every day.
+        </li>
+
+        <li>
+          Social distance radius - the minimum distance two people can be from
+          each other before they will begin to socially distance from each
+          other.<br />
+          This parameter is relative to the size of a person. E.g. a value of 3
+          means the distance two people can be apart before they socially
+          distance from each other is equivalent to the size of 3 people.
+        </li>
+
+        <li>
+          Asymptomatic period - the number of days a person is asymptomatic for.
+        </li>
+
+        <li>
+          Infectious period - the maximum number of days a person can be
+          infected for
+        </li>
+      </ul>
+    </div>
+  </body>
 </html>
